@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  phone_number: MyString
+  answers_phone_if_from_school: false
+  has_respect_for_teachers: false
+  email: MyString
+  student_id: 1
+
+two:
+  name: MyString
+  phone_number: MyString
+  answers_phone_if_from_school: false
+  has_respect_for_teachers: false
+  email: MyString
+  student_id: 1
