@@ -1,10 +1,17 @@
 class StudentsController < ApplicationController
+  before_action :logged_in?
   before_action :set_student, only: [:show, :edit, :update, :destroy]
 
+  private def logged_in?
+    unless Teacher.find_by_id(session[:user_id])
+      redirect_to sessions_login_path, notice: 'User or Password does not match our records.'
+    end
+  end
   # GET /students
   # GET /students.json
   def index
     @students = Student.all
+    @user = Teacher.find_by_id(session[:user_id]).name
   end
 
   # GET /students/1
@@ -69,6 +76,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:name, :grade)
+      params.require(:student).permit(:name, :grade, :teacher_id)
     end
 end

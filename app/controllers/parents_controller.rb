@@ -1,10 +1,17 @@
 class ParentsController < ApplicationController
+  before_action :logged_in?
   before_action :set_parent, only: [:show, :edit, :update, :destroy]
 
+  private def logged_in?
+    unless Teacher.find_by_id(session[:user_id])
+      redirect_to sessions_login_path, notice: 'User or Password does not match our records.'
+    end
+  end
   # GET /parents
   # GET /parents.json
   def index
     @parents = Parent.all
+    @user = Teacher.find_by_id(session[:user_id]).name
   end
 
   # GET /parents/1

@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Students</h1>
 
 <table>
@@ -7,15 +5,18 @@
     <tr>
       <th>Name</th>
       <th>Grade</th>
+      <th>Teacher</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @students.each do |student| %>
+    <% @your_students = @students.select {|kid| kid.teacher.name == @user} %>
+    <% @your_students.each do |student| %>
       <tr>
         <td><%= student.name %></td>
         <td><%= student.grade %></td>
+        <td><%= student.teacher.name %></td>
         <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>

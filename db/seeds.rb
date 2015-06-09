@@ -5,3 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+5.times do
+  Teacher.create(name: Faker::Name.name, email: Faker::Internet.email,
+      password: "password")
+end
+
+100.times do
+  Student.create(name: Faker::Name.name, grade: ['A', 'B', 'C', 'D', 'F'].sample,
+      teacher_id: (1..5).to_a.sample)
+end
+
+100.times do |n|
+  Parent.create(name: Faker::Name.name, email: Faker::Internet.email,
+      phone_number: Faker::PhoneNumber.phone_number, has_respect_for_teachers: [true, false].sample,
+      answers_phone_if_from_school: [true, false].sample, student_id: n)
+end
