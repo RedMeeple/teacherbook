@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :students
   resources :parents
-
+  resources :dashboard, only: [:edit, :update]
 
   get 'sessions/login'
   post 'sessions/login'

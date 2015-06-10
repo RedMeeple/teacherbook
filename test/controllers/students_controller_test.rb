@@ -1,16 +1,20 @@
 require 'test_helper'
+require 'students_controller.rb'
+
+class StudentsController < ApplicationController
+  private def logged_in?
+    true
+  end
+
+  def index
+    @user = "teacher"
+  end
+end
 
 class StudentsControllerTest < ActionController::TestCase
   setup do
     @student = students(:one)
   end
-
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:students)
-  end
-
   test "should get new" do
     get :new
     assert_response :success

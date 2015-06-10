@@ -1,6 +1,6 @@
-<h2>Welcome, <%= @user %></h2>
-
 
 <%= link_to 'View Students', students_path %>
 
 <%= link_to 'View Parents', parents_path %>
+
+<%= link_to 'Change Your Password', edit_dashboard_path(@user) %>
