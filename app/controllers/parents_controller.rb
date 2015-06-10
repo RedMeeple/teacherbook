@@ -21,7 +21,7 @@ class ParentsController < ApplicationController
 
   # GET /parents/new
   def new
-    @parent = Parent.new
+    @parent = Parent.new(student_id: params[:student_id])
   end
 
   # GET /parents/1/edit

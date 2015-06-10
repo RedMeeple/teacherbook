@@ -14,7 +14,7 @@
   </thead>
 
   <tbody>
-    <% @your_parents = @parents.select {|adult| adult.teacher == @user} %>
+    <% @your_parents = @parents.select { |parent| parent } %>
     <% @your_parents.each do |parent| %>
       <tr>
         <td><%= parent.name %></td>
@@ -32,5 +32,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Parent', new_parent_path %>

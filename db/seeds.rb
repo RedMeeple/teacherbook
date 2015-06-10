@@ -21,3 +21,11 @@ end
       phone_number: Faker::PhoneNumber.phone_number, has_respect_for_teachers: [true, false].sample,
       answers_phone_if_from_school: [true, false].sample, student_id: n+1)
 end
+
+100.times do |n|
+  StudentTeacherRelationship.create(student_id: n+1, teacher_id: (1..5).to_a.sample)
+end
+
+100.times do |n|
+  StudentParentRelationship.create(student_id: n+1, parent_id: n+1)
+end

@@ -11,7 +11,8 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     @students = Student.all
-    @user = Teacher.find_by_id(session[:user_id]).name
+    @user = Teacher.find_by_id(session[:user_id])
+    @relationships = StudentTeacherRelationship.where(teacher_id: session[:user_id]).all
   end
 
   # GET /students/1
